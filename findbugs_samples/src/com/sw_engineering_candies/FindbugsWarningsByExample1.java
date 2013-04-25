@@ -36,8 +36,7 @@ public class FindbugsWarningsByExample1 {
 		// CORRECT
 		FindbugsWarningsByExample1.bcImpossibleInstanceOfCORRECT();
 
-		System.out
-				.println("Findbugs Sample 004 for BC_IMPOSSIBLE_DOWNCAST_OF_TOARRAY");
+		System.out.println("Findbugs Sample 004 for BC_IMPOSSIBLE_DOWNCAST_OF_TOARRAY");
 		// WRONG
 		try {
 			FindbugsWarningsByExample1.bcImpossibleDowncastOfArrayWRONG();
@@ -47,15 +46,13 @@ public class FindbugsWarningsByExample1 {
 		// CORRECT
 		FindbugsWarningsByExample1.bcImpossibleDowncastOfArrayCORRECT();
 
-		System.out
-				.println("Findbugs Sample 005 for DMI_BIGDECIMAL_CONSTRUCTED_FROM_DOUBLE");
+		System.out.println("Findbugs Sample 005 for DMI_BIGDECIMAL_CONSTRUCTED_FROM_DOUBLE");
 		// WRONG
 		FindbugsWarningsByExample1.dmiBigDecimalConstructedFromDoubleWRONG();
 		// CORRECT
 		FindbugsWarningsByExample1.dmiBigDecimalConstructedFromDoubleCORRECT();
 
-		System.out
-				.println("Findbugs Sample 006 for ES_COMPARING_STRINGS_WITH_EQ");
+		System.out.println("Findbugs Sample 006 for ES_COMPARING_STRINGS_WITH_EQ");
 		// WRONG
 		FindbugsWarningsByExample1.esComparingStringsWithEqWRONG();
 		// CORRECT
@@ -87,8 +84,7 @@ public class FindbugsWarningsByExample1 {
 		// CORRECT
 		FindbugsWarningsByExample1.npAlwaysNullCORRECT();
 
-		System.out
-				.println("Findbugs Sample 010 for QBA_QUESTIONABLE_BOOLEAN_ASSIGNMENT");
+		System.out.println("Findbugs Sample 010 for QBA_QUESTIONABLE_BOOLEAN_ASSIGNMENT");
 		// WRONG
 		FindbugsWarningsByExample1.qabQuestionableBooleanAssignmentWRONG();
 		// CORRECT
@@ -142,8 +138,7 @@ public class FindbugsWarningsByExample1 {
 		final Collection<String> stringVector = new ArrayList<String>();
 		stringVector.add("abc");
 		stringVector.add("xyz");
-		final String[] stringArray = stringVector
-				.toArray(new String[stringVector.size()]);
+		final String[] stringArray = stringVector.toArray(new String[stringVector.size()]);
 		System.out.println("   - " + stringArray.length);
 	}
 

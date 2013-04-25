@@ -4,8 +4,7 @@ public class FindbugsWarningsByExample3 {
 
 	public static void main(final String[] args) {
 
-		System.out
-				.println("\nFindbugs Sample for LEST_LOST_EXCEPTION_STACK_TRACE ");
+		System.out.println("\nFindbugs Sample for LEST_LOST_EXCEPTION_STACK_TRACE ");
 		// Confidence: Normal, Rank: Scariest (2)
 		// Pattern: LEST_LOST_EXCEPTION_STACK_TRACE
 		// Type: LEST, Category: CORRECTNESS (Correctness)
@@ -23,22 +22,19 @@ public class FindbugsWarningsByExample3 {
 			System.out.println("   - Exception Cause: " + e.getCause());
 		}
 
-		System.out
-				.println("\nFindbugs Sample for RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE");
+		System.out.println("\nFindbugs Sample for RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE");
 		// Confidence: High, Rank: Scary (9)
 		// Pattern: RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE
 		// Type: RCN, Category: CORRECTNESS (Correctness)
 		//
 		// WRONG
 		try {
-			FindbugsWarningsByExample3
-					.rcnRedundantNullcheckWouldHaveBeenANpeWRONG(null);
+			FindbugsWarningsByExample3.rcnRedundantNullcheckWouldHaveBeenANpeWRONG(null);
 		} catch (final NullPointerException e) {
 			System.out.println("   - Exception Cause: " + e.getCause());
 		}
 		// CORRECT
-		FindbugsWarningsByExample3
-				.rcnRedundantNullcheckWouldHaveBeenANpeCORRECT(null);
+		FindbugsWarningsByExample3.rcnRedundantNullcheckWouldHaveBeenANpeCORRECT(null);
 
 		final int randomInput = 1 + (int) Math.round(Math.random() * 1.0);
 		System.out.println("\nFindbugs Sample for SF_SWITCH_FALLTHROUGH");
@@ -51,35 +47,29 @@ public class FindbugsWarningsByExample3 {
 		// CORRECT
 		FindbugsWarningsByExample3.sfSwitchFallthroughCORRECT(randomInput);
 
-		System.out
-				.println("\nFindbugs Sample for SF_DEAD_STORE_DUE_TO_SWITCH_FALLTHROUGH_TO_THROW");
+		System.out.println("\nFindbugs Sample for SF_DEAD_STORE_DUE_TO_SWITCH_FALLTHROUGH_TO_THROW");
 		// Confidence: High, Rank: Scariest (1)
 		// Pattern: SF_DEAD_STORE_DUE_TO_SWITCH_FALLTHROUGH_TO_THROW
 		// Type: SF, Category: CORRECTNESS (Correctness)
 		//
 		// WRONG
 		try {
-			FindbugsWarningsByExample3
-					.sfDeadStroreDueToSwitchFallthroughToThrowWRONG(randomInput);
+			FindbugsWarningsByExample3.sfDeadStroreDueToSwitchFallthroughToThrowWRONG(randomInput);
 		} catch (final IllegalArgumentException e) {
 			System.out.println("   - ERROR:" + e.getMessage());
 		}
 		// CORRECT
-		FindbugsWarningsByExample3
-				.sfDeadStroreDueToSwitchFallthroughToThrowCORRECT(randomInput);
+		FindbugsWarningsByExample3.sfDeadStroreDueToSwitchFallthroughToThrowCORRECT(randomInput);
 
-		System.out
-				.println("\nFindbugs Sample for SF_DEAD_STORE_DUE_TO_SWITCH_FALLTHROUGH");
+		System.out.println("\nFindbugs Sample for SF_DEAD_STORE_DUE_TO_SWITCH_FALLTHROUGH");
 		// Confidence: High, Rank: Scariest (1)
 		// Pattern: SF_DEAD_STORE_DUE_TO_SWITCH_FALLTHROUGH
 		// Type: SF, Category: CORRECTNESS (Correctness)
 		//
 		// WRONG
-		FindbugsWarningsByExample3
-				.sfDeadStroreDueToSwitchFallthroughWRONG(randomInput);
+		FindbugsWarningsByExample3.sfDeadStroreDueToSwitchFallthroughWRONG(randomInput);
 		// CORRECT
-		FindbugsWarningsByExample3
-				.sfDeadStroreDueToSwitchFallthroughCORRECT(randomInput);
+		FindbugsWarningsByExample3.sfDeadStroreDueToSwitchFallthroughCORRECT(randomInput);
 
 	}
 
@@ -100,16 +90,14 @@ public class FindbugsWarningsByExample3 {
 		}
 	}
 
-	private static void rcnRedundantNullcheckWouldHaveBeenANpeWRONG(
-			final String text) {
+	private static void rcnRedundantNullcheckWouldHaveBeenANpeWRONG(final String text) {
 		// Next line should show RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE
 		System.out.println(text.length());
 		if (null == text)
 			return;
 	}
 
-	private static void rcnRedundantNullcheckWouldHaveBeenANpeCORRECT(
-			final String text) {
+	private static void rcnRedundantNullcheckWouldHaveBeenANpeCORRECT(final String text) {
 		if (null == text)
 			return;
 		System.out.println(text.length());
@@ -135,8 +123,7 @@ public class FindbugsWarningsByExample3 {
 		}
 	}
 
-	private static int sfDeadStroreDueToSwitchFallthroughToThrowWRONG(
-			final int input) {
+	private static int sfDeadStroreDueToSwitchFallthroughToThrowWRONG(final int input) {
 
 		int result;
 		switch (input) {
@@ -159,8 +146,7 @@ public class FindbugsWarningsByExample3 {
 		return result;
 	}
 
-	private static int sfDeadStroreDueToSwitchFallthroughToThrowCORRECT(
-			final int input) {
+	private static int sfDeadStroreDueToSwitchFallthroughToThrowCORRECT(final int input) {
 
 		int result = 0;
 		switch (input) {
@@ -197,8 +183,7 @@ public class FindbugsWarningsByExample3 {
 		System.out.println("   - result=" + result);
 	}
 
-	private static void sfDeadStroreDueToSwitchFallthroughCORRECT(
-			final int input) {
+	private static void sfDeadStroreDueToSwitchFallthroughCORRECT(final int input) {
 		int result = 0;
 		switch (input) {
 		case 0:

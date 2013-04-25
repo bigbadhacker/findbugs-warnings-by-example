@@ -15,60 +15,44 @@ public class FindbugsWarningsByExample2 {
 		Statement createStatement = null;
 		Connection connection = null;
 		try {
-			System.out
-					.println("Findbugs Sample prepare small in memory database");
+			System.out.println("Findbugs Sample prepare small in memory database");
 			connection = getConnection_dmiConstantDbPasswordCORRECT();
 			createStatement = connection.createStatement();
-			createStatement
-					.execute("create table T_ADVICE (answer varchar(255), "
-							+ "owner varchar(255))");
-			createStatement
-					.execute("insert into T_ADVICE ( answer, owner ) values "
-							+ "('Don''t Panic', 'Joe')");
-			createStatement
-					.execute("insert into T_ADVICE ( answer, owner ) values "
-							+ "('Keep Smiling', 'John')");
+			createStatement.execute("create table T_ADVICE (answer varchar(255), " + "owner varchar(255))");
+			createStatement.execute("insert into T_ADVICE ( answer, owner ) values "
+					+ "('Don''t Panic', 'Joe')");
+			createStatement.execute("insert into T_ADVICE ( answer, owner ) values "
+					+ "('Keep Smiling', 'John')");
 
-			System.out
-					.println("\nFindbugs Sample for DMI_CONSTANT_DB_PASSWORD");
+			System.out.println("\nFindbugs Sample for DMI_CONSTANT_DB_PASSWORD");
 			// WRONG
-			FindbugsWarningsByExample2
-					.getConnection_dmiConstantDbPasswordWRONG();
+			FindbugsWarningsByExample2.getConnection_dmiConstantDbPasswordWRONG();
 			// CORRECT
-			FindbugsWarningsByExample2
-					.getConnection_dmiConstantDbPasswordCORRECT();
+			FindbugsWarningsByExample2.getConnection_dmiConstantDbPasswordCORRECT();
 
 			System.out.println("\nFindbugs Sample for DMI_EMPTY_DB_PASSWORD");
 			// WRONG
 			FindbugsWarningsByExample2.getConnection_dmiEmptyDbPasswordWRONG();
 			// CORRECT
-			FindbugsWarningsByExample2
-					.getConnection_dmiConstantDbPasswordCORRECT();
+			FindbugsWarningsByExample2.getConnection_dmiConstantDbPasswordCORRECT();
 
-			System.out
-					.println("\nFindbugs Sample for SQL_NONCONSTANT_STRING_PASSED_TO_EXECUTE");
+			System.out.println("\nFindbugs Sample for SQL_NONCONSTANT_STRING_PASSED_TO_EXECUTE");
 			// WRONG
-			FindbugsWarningsByExample2
-					.sqlNonconstantStringPassedToExecuteWRONG("Joe");
+			FindbugsWarningsByExample2.sqlNonconstantStringPassedToExecuteWRONG("Joe");
 			// CORRECT
-			FindbugsWarningsByExample2
-					.sqlNonconstantStringPassedToExecuteCORRECT("Joe");
+			FindbugsWarningsByExample2.sqlNonconstantStringPassedToExecuteCORRECT("Joe");
 
-			System.out
-					.println("\nFindbugs Sample for OBL_UNSATISFIED_OBLIGATION");
+			System.out.println("\nFindbugs Sample for OBL_UNSATISFIED_OBLIGATION");
 			// WRONG
 			FindbugsWarningsByExample2.oblUnsatisfiedObligationWRONG("Joe");
 			// CORRECT
 			FindbugsWarningsByExample2.oblUnsatisfiedObligationCORRECT("Joe");
 
-			System.out
-					.println("\nFindbugs Sample for OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE");
+			System.out.println("\nFindbugs Sample for OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE");
 			// WRONG
-			FindbugsWarningsByExample2
-					.oblUnsatisfiedObligationExceptionEdgeWRONG("Joe");
+			FindbugsWarningsByExample2.oblUnsatisfiedObligationExceptionEdgeWRONG("Joe");
 			// CORRECT
-			FindbugsWarningsByExample2
-					.oblUnsatisfiedObligationExceptionEdgeCORRECT("Joe");
+			FindbugsWarningsByExample2.oblUnsatisfiedObligationExceptionEdgeCORRECT("Joe");
 
 		} catch (final SQLException e) {
 			System.out.println("   - ERROR:" + e.getMessage());
@@ -90,8 +74,7 @@ public class FindbugsWarningsByExample2 {
 
 	}
 
-	private static Connection getConnection_dmiConstantDbPasswordWRONG()
-			throws SQLException {
+	private static Connection getConnection_dmiConstantDbPasswordWRONG() throws SQLException {
 
 		Connection connection = null;
 		try {
@@ -99,18 +82,15 @@ public class FindbugsWarningsByExample2 {
 		} catch (final ClassNotFoundException e) {
 			System.out.println("   - ERROR:" + e.getMessage());
 		}
-		connection = DriverManager.getConnection(
-				"jdbc:derby:memory:myDB;create=true", "APP",
+		connection = DriverManager.getConnection("jdbc:derby:memory:myDB;create=true", "APP",
 				"my-secret-password");
-		System.out
-				.println("   - DriverManager.getConnection(\"jdbc:derby:database;"
-						+ "create=true\", \"test\", \"admin\"))");
+		System.out.println("   - DriverManager.getConnection(\"jdbc:derby:database;"
+				+ "create=true\", \"test\", \"admin\"))");
 
 		return connection;
 	}
 
-	private static Connection getConnection_dmiEmptyDbPasswordWRONG()
-			throws SQLException {
+	private static Connection getConnection_dmiEmptyDbPasswordWRONG() throws SQLException {
 
 		Connection connection = null;
 		try {
@@ -118,16 +98,13 @@ public class FindbugsWarningsByExample2 {
 		} catch (final ClassNotFoundException e) {
 			System.out.println("   - ERROR:" + e.getMessage());
 		}
-		connection = DriverManager.getConnection(
-				"jdbc:derby:memory:myDB;create=true", "APP", "");
-		System.out
-				.println("   - DriverManager.getConnection(\"jdbc:derby:database;create=true\","
-						+ " \"test\", \"\"))");
+		connection = DriverManager.getConnection("jdbc:derby:memory:myDB;create=true", "APP", "");
+		System.out.println("   - DriverManager.getConnection(\"jdbc:derby:database;create=true\","
+				+ " \"test\", \"\"))");
 		return connection;
 	}
 
-	private static Connection getConnection_dmiConstantDbPasswordCORRECT()
-			throws SQLException {
+	private static Connection getConnection_dmiConstantDbPasswordCORRECT() throws SQLException {
 
 		Connection connection = null;
 		try {
@@ -135,12 +112,10 @@ public class FindbugsWarningsByExample2 {
 		} catch (final ClassNotFoundException e) {
 			System.out.println("   - ERROR:" + e.getMessage());
 		}
-		connection = DriverManager.getConnection(
-				"jdbc:derby:memory:myDB;create=true", "APP",
+		connection = DriverManager.getConnection("jdbc:derby:memory:myDB;create=true", "APP",
 				getSecurePassword());
-		System.out
-				.println("   - DriverManager.getConnection(\"jdbc:derby:database;"
-						+ "create=true\", \"test\", pwdDecoder()))");
+		System.out.println("   - DriverManager.getConnection(\"jdbc:derby:database;"
+				+ "create=true\", \"test\", pwdDecoder()))");
 		return connection;
 	}
 
@@ -149,20 +124,16 @@ public class FindbugsWarningsByExample2 {
 		return "my-sec" + "ret-password";
 	}
 
-	private static void sqlNonconstantStringPassedToExecuteWRONG(
-			final String owner) {
+	private static void sqlNonconstantStringPassedToExecuteWRONG(final String owner) {
 
 		Statement statement = null;
 		ResultSet resultSet = null;
 		try {
-			final String query = "SELECT answer FROM T_ADVICE WHERE owner= '"
-					+ owner + "'";
-			statement = getConnection_dmiConstantDbPasswordCORRECT()
-					.createStatement();
+			final String query = "SELECT answer FROM T_ADVICE WHERE owner= '" + owner + "'";
+			statement = getConnection_dmiConstantDbPasswordCORRECT().createStatement();
 			resultSet = statement.executeQuery(query);
 			while (resultSet.next()) {
-				System.out.println("   - Result (Statement):"
-						+ resultSet.getString("ANSWER"));
+				System.out.println("   - Result (Statement):" + resultSet.getString("ANSWER"));
 			}
 		} catch (final SQLException e) {
 			System.out.println("   - ERROR:" + e.getMessage());
@@ -183,19 +154,16 @@ public class FindbugsWarningsByExample2 {
 		}
 	}
 
-	private static void sqlNonconstantStringPassedToExecuteCORRECT(
-			final String owner) {
+	private static void sqlNonconstantStringPassedToExecuteCORRECT(final String owner) {
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		try {
 			final String query = "SELECT answer FROM T_ADVICE WHERE owner = ?";
-			statement = getConnection_dmiConstantDbPasswordCORRECT()
-					.prepareStatement(query);
+			statement = getConnection_dmiConstantDbPasswordCORRECT().prepareStatement(query);
 			statement.setString(1, owner);
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
-				System.out.println("   - Result (PreparedStatement):"
-						+ resultSet.getString("ANSWER"));
+				System.out.println("   - Result (PreparedStatement):" + resultSet.getString("ANSWER"));
 			}
 		} catch (final SQLException e) {
 			System.out.println("   - ERROR:" + e.getMessage());
@@ -221,13 +189,11 @@ public class FindbugsWarningsByExample2 {
 		ResultSet resultSet = null;
 		try {
 			final String query = "SELECT answer FROM T_ADVICE WHERE owner = ?";
-			statement = getConnection_dmiConstantDbPasswordCORRECT()
-					.prepareStatement(query);
+			statement = getConnection_dmiConstantDbPasswordCORRECT().prepareStatement(query);
 			statement.setString(1, owner);
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
-				System.out.println("   - Result (PreparedStatement):"
-						+ resultSet.getString("ANSWER"));
+				System.out.println("   - Result (PreparedStatement):" + resultSet.getString("ANSWER"));
 			}
 		} catch (final SQLException e) {
 			System.out.println("   - ERROR:" + e.getMessage());
@@ -246,13 +212,11 @@ public class FindbugsWarningsByExample2 {
 		ResultSet resultSet = null;
 		try {
 			final String query = "SELECT answer FROM T_ADVICE WHERE owner = ?";
-			statement = getConnection_dmiConstantDbPasswordCORRECT()
-					.prepareStatement(query);
+			statement = getConnection_dmiConstantDbPasswordCORRECT().prepareStatement(query);
 			statement.setString(1, owner);
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
-				System.out.println("   - Result (PreparedStatement):"
-						+ resultSet.getString("ANSWER"));
+				System.out.println("   - Result (PreparedStatement):" + resultSet.getString("ANSWER"));
 			}
 		} catch (final SQLException e) {
 			System.out.println("   - ERROR:" + e.getMessage());
@@ -272,19 +236,16 @@ public class FindbugsWarningsByExample2 {
 		}
 	}
 
-	private static void oblUnsatisfiedObligationExceptionEdgeWRONG(
-			final String owner) {
+	private static void oblUnsatisfiedObligationExceptionEdgeWRONG(final String owner) {
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		try {
 			final String query = "SELECT answer FROM T_ADVICE WHERE owner = ?";
-			statement = getConnection_dmiConstantDbPasswordCORRECT()
-					.prepareStatement(query);
+			statement = getConnection_dmiConstantDbPasswordCORRECT().prepareStatement(query);
 			statement.setString(1, owner);
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
-				System.out.println("   - Result (PreparedStatement):"
-						+ resultSet.getString("ANSWER"));
+				System.out.println("   - Result (PreparedStatement):" + resultSet.getString("ANSWER"));
 			}
 			if (null != statement) {
 				try {
@@ -304,19 +265,16 @@ public class FindbugsWarningsByExample2 {
 		}
 	}
 
-	private static void oblUnsatisfiedObligationExceptionEdgeCORRECT(
-			final String owner) {
+	private static void oblUnsatisfiedObligationExceptionEdgeCORRECT(final String owner) {
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		try {
 			final String query = "SELECT answer FROM T_ADVICE WHERE owner = ?";
-			statement = getConnection_dmiConstantDbPasswordCORRECT()
-					.prepareStatement(query);
+			statement = getConnection_dmiConstantDbPasswordCORRECT().prepareStatement(query);
 			statement.setString(1, owner);
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
-				System.out.println("   - Result (PreparedStatement):"
-						+ resultSet.getString("ANSWER"));
+				System.out.println("   - Result (PreparedStatement):" + resultSet.getString("ANSWER"));
 			}
 			if (null != statement) {
 				try {
